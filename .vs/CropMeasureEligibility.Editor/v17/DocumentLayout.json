@@ -1,0 +1,355 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\service\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\service\\service.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\listd\\actioncontextlivestockrequestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\listd\\actioncontextlivestockrequestitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\infrastructure\\persistance\\editordbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\infrastructure\\persistance\\editordbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\listd\\livestockrequestitemchanges.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\listd\\livestockrequestitemchanges.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\common\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\common\\enums.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\actioncontext\\commonmeasuredcdefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\actioncontext\\commonmeasuredcdefinition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\actioncontext\\dccategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\actioncontext\\dccategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\actioncontext\\dcanimaltype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\actioncontext\\dcanimaltype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\actioncontextdto\\livestockcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\actioncontextdto\\livestockcategorydto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\actioncontextdto\\livestockmeasuredto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\actioncontextdto\\livestockmeasuredto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\common\\helpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\common\\helpers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\actioncontext\\livestockrequestitemmeasures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\actioncontext\\livestockrequestitemmeasures.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\actioncontext\\livestock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\actioncontext\\livestock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\actioncontext\\livestockcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\actioncontext\\livestockcategory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\actioncontext\\livestockmeasure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\actioncontext\\livestockmeasure.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\actioncontextdto\\livestockactioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\actioncontextdto\\livestockactioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\actioncontextdto\\livestockdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\actioncontextdto\\livestockdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|d:\\code\\codebyvlado\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\cropmeasureeligibility.editor\\models\\listd\\livestockrequestitemswarningdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E9740160-E8C7-4AEC-8AB6-F3F53A733308}|CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor.csproj|solutionrelative:cropmeasureeligibility.editor\\models\\listd\\livestockrequestitemswarningdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 24,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ActionContextLivestockRequestItem.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ListD\\ActionContextLivestockRequestItem.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ListD\\ActionContextLivestockRequestItem.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ListD\\ActionContextLivestockRequestItem.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ListD\\ActionContextLivestockRequestItem.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-29T08:37:18.761Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{be4d7042-ba3f-11d2-840e-00c04f9902c1}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "DcanimalType.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\DcanimalType.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ActionContext\\DcanimalType.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\DcanimalType.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ActionContext\\DcanimalType.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T14:47:59.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Dccategory.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\Dccategory.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ActionContext\\Dccategory.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\Dccategory.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ActionContext\\Dccategory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T14:44:23.016Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "CommonMeasureDcdefinition.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\CommonMeasureDcdefinition.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ActionContext\\CommonMeasureDcdefinition.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\CommonMeasureDcdefinition.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ActionContext\\CommonMeasureDcdefinition.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T14:43:51.985Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LivestockRequestItemMeasures.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockRequestItemMeasures.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockRequestItemMeasures.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockRequestItemMeasures.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockRequestItemMeasures.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAIAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T12:58:57.621Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Livestock.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\Livestock.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ActionContext\\Livestock.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\Livestock.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ActionContext\\Livestock.cs",
+              "ViewState": "AQIAAB4AAAAAAAAAAAD4vykAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T12:00:52.417Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "LivestockMeasure.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockMeasure.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockMeasure.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockMeasure.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockMeasure.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T11:59:53.206Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "LivestockCategory.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockCategory.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockCategory.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockCategory.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ActionContext\\LivestockCategory.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T11:59:28.379Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "EditorDbContext.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Infrastructure\\Persistance\\EditorDbContext.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Infrastructure\\Persistance\\EditorDbContext.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Infrastructure\\Persistance\\EditorDbContext.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Infrastructure\\Persistance\\EditorDbContext.cs",
+              "ViewState": "AQIAAAQAAAAAAAAAAAAtwBAAAAAmAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T11:55:50.242Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "LivestockActionContext.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockActionContext.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockActionContext.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockActionContext.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockActionContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAIAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T11:53:36.7Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LivestockCategoryDto.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockCategoryDto.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockCategoryDto.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockCategoryDto.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockCategoryDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAIAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T11:52:49.453Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "LivestockMeasureDto.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockMeasureDto.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockMeasureDto.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockMeasureDto.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockMeasureDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAqwAIAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T11:52:30.578Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "LivestockDto.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockDto.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockDto.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockDto.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ActionContextDto\\LivestockDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T11:52:09.134Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Enums.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Common\\Enums.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Common\\Enums.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Common\\Enums.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Common\\Enums.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAuwDEAAAACAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-02-28T11:48:45.83Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "LivestockRequestItemsWarningDto.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ListD\\LivestockRequestItemsWarningDto.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ListD\\LivestockRequestItemsWarningDto.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ListD\\LivestockRequestItemsWarningDto.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ListD\\LivestockRequestItemsWarningDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-28T14:30:06.964Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LivestockRequestItemChanges.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ListD\\LivestockRequestItemChanges.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Models\\ListD\\LivestockRequestItemChanges.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Models\\ListD\\LivestockRequestItemChanges.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Models\\ListD\\LivestockRequestItemChanges.cs",
+              "ViewState": "AQIAAJEAAAAAAAAAAAAMwKYAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-28T14:00:08.18Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Helpers.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Common\\Helpers.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Common\\Helpers.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Common\\Helpers.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Common\\Helpers.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAAEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-01T12:18:53.445Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Service.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Service\\Service.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Service\\Service.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Service\\Service.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Service\\Service.cs",
+              "ViewState": "AQIAAOACAAAAAAAAAAAewAIDAAA7AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-01T11:58:29.592Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Program.cs",
+              "RelativeDocumentMoniker": "CropMeasureEligibility.Editor\\Program.cs",
+              "ToolTip": "D:\\Code\\CodeByVlado\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\CropMeasureEligibility.Editor\\Program.cs",
+              "RelativeToolTip": "CropMeasureEligibility.Editor\\Program.cs",
+              "ViewState": "AQIAABEAAAAAAAAAAAAIwC4AAABMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2023-12-01T11:22:53.506Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
