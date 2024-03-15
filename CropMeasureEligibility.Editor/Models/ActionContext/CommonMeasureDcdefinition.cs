@@ -14,13 +14,13 @@
 		public int? RequestDocumentTypeId { get; set; }
 		public string MeasureName { get; set; }
 		public bool? IsVisbileOnSummary { get; set; }
-		public string Code { get; set; }
+		public string? Code { get; set; }
 		public int ProductionTypeId { get; set; }
 		public bool IsDelayRedCalcUsingDecId { get; set; }
 		public int? NoticeTypeId { get; set; }
 		public int CurrencyId { get; set; }
 		public string PaymentMeasureName { get; set; }
-		public string FocusArea { get; set; }
+		public string? FocusArea { get; set; }
 		public bool? IsObligationReductionApplicable { get; set; }
 		public string NoticeName { get; set; }
 		public bool? IsForDecisionAdministration { get; set; }
@@ -28,6 +28,6 @@
 		public bool? IsForPublish { get; set; }
 		public int? OperationTypeId { get; set; }
 		public bool? IsVgoapplicable { get; set; }
-		public string MeasureCode { get; set; }
+		public string? MeasureCode { get; set; }
 	}
 }

@@ -4,6 +4,7 @@ using CropMeasureEligibility.Editor.Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CropMeasureEligibility.Editor.Migrations
 {
     [DbContext(typeof(EditorDbContext))]
-    partial class EditorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240229134231_AddedActionContext")]
+    partial class AddedActionContext
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,6 +37,7 @@ namespace CropMeasureEligibility.Editor.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Code")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("ControlTypeId")
@@ -46,6 +50,7 @@ namespace CropMeasureEligibility.Editor.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FocusArea")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("InitialPhaseId")
@@ -70,6 +75,7 @@ namespace CropMeasureEligibility.Editor.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("MeasureCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("MeasureGroupId")
@@ -156,6 +162,7 @@ namespace CropMeasureEligibility.Editor.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LegendName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -179,6 +186,7 @@ namespace CropMeasureEligibility.Editor.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("AnimalBreedCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("AnimalBreedId")
@@ -195,6 +203,7 @@ namespace CropMeasureEligibility.Editor.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("AnimalTypeCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("Bolus")
@@ -234,9 +243,11 @@ namespace CropMeasureEligibility.Editor.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("FatherAnimalBreed")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FatherAnimalCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("HadOffspring")
@@ -260,6 +271,7 @@ namespace CropMeasureEligibility.Editor.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MicrochipCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool?>("MilkControl")
@@ -269,9 +281,11 @@ namespace CropMeasureEligibility.Editor.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MotherAnimalBreed")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("MotherAnimalCode")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("ProcessingId")

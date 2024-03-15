@@ -24,6 +24,8 @@ namespace CropMeasureEligibility.Editor.Service
 			(int)CommonRequestDocumentDeclarationEnum.FirstBreedCowsPayment
 		};
 
+		public static readonly List<int> ListDMeasureDefinitionIds = new List<int>(2) { 509, 518 };
+
 		internal static async Task UpdateJsonToDb()
 		{
 			using var context = new EditorDbContext();
@@ -214,7 +216,7 @@ namespace CropMeasureEligibility.Editor.Service
 		internal static async Task GeneratePdfFile(string submissionId, string farmId)
 		{
 
-			string url = "http://testisa15/demeter/webservice/Subsidy/CommonClaim.asmx/StartSubmissionFileAsyncTask";
+			string url = "http://upisnik/demeter/webservice/Subsidy/CommonClaim.asmx/StartSubmissionFileAsyncTask";
 
 			using (HttpClient client = new HttpClient())
 			{
@@ -223,15 +225,14 @@ namespace CropMeasureEligibility.Editor.Service
 
 				try
 				{
-
 					HttpResponseMessage response = await client.PostAsync(url, content);
-
 
 					if (response.IsSuccessStatusCode)
 					{
 						string responseContent = await response.Content.ReadAsStringAsync();
 						Console.WriteLine("Response from server:");
 						Console.WriteLine(responseContent);
+						Console.WriteLine($"*** DONE FarmId: {farmId} , BarcodeId {submissionId} ***");
 					}
 					else
 					{
@@ -350,7 +351,80 @@ namespace CropMeasureEligibility.Editor.Service
 
 		internal static async Task UpdateJsonListC()
 		{
+			using var context = new EditorDbContext();
 
+			List<ActionContextLivestockRequestItem> actionContextLivestockRequestItems = await context.ActionContextLivestockRequestItems
+				.Where(x => x.RequestDocumentTypeId == 3 && String.IsNullOrEmpty(x.LivestockRequestItemsAfterUpdate))
+				.ToListAsync();
+
+			foreach (ActionContextLivestockRequestItem livestockRequestItem in actionContextLivestockRequestItems)
+			{
+				if (!String.IsNullOrEmpty(livestockRequestItem.LivestockRequestItemsAfterUpdate))
+					continue;
+
+				if (!String.IsNullOrEmpty(livestockRequestItem.LivestockRequestItems))
+				{
+					LivestockRequestItemChanges changes = Helpers.DeserializeFromJsonString<LivestockRequestItemChanges>(livestockRequestItem.LivestockRequestItems);
+
+					IEnumerable<LivestockRequestItemGroupedDto> groupedDtos = changes.Changes.Values
+						.GroupBy(x => x.Jibg)
+						.ToDictionary(x => x.Key, y => y.ToList())
+						.Select(x => new LivestockRequestItemGroupedDto
+						{
+							Jibg = x.Key,
+							LivestockRequestItems = x.Value
+						});
+
+					LivestockRequestItemChanges livestockChanges = new LivestockRequestItemChanges();
+
+					if (groupedDtos != null && groupedDtos.Any())
+					{
+						LivestockActionContext livestockActionContext = null;
+
+						if (!String.IsNullOrEmpty(livestockRequestItem.LivestockDictionaryAfterUpdate))
+						{
+							livestockActionContext = Helpers.DeserializeFromJsonString<LivestockActionContext>(livestockRequestItem.LivestockDictionaryAfterUpdate);
+
+							livestockChanges = await CreateLivestockRequestItemChanges(livestockActionContext, livestockRequestItem.ActionContextYear, livestockRequestItem.FarmId, RequestDocumentTypeEnum.ListC);
+						}
+						else
+						{
+							if (!String.IsNullOrEmpty(livestockRequestItem.LivestockRequestItems))
+							{
+								foreach (LivestockRequestItemGroupedDto item in groupedDtos)
+								{
+									LivestockRequestItemGroupedDto livestockRequestItemGroup = new LivestockRequestItemGroupedDto
+									{
+										Jibg = item.Jibg,
+										LivestockRequestItems = item.LivestockRequestItems
+									};
+
+									List<int> livestockIds = livestockRequestItemGroup.LivestockRequestItems.Select(x => x.LivestockId).Distinct().ToList();
+
+									Dictionary<int, Guid> identifiersIds = livestockRequestItemGroup.LivestockRequestItems.Select(x => new { x.LivestockId, x.Identifier }).Distinct().ToDictionary(x => x.LivestockId, x => x.Identifier);
+
+									if (livestockIds.Any())
+									{
+										livestockActionContext = await CreateLivestockActionContext(livestockRequestItem, RequestDocumentTypeEnum.ListC, livestockIds);
+
+										livestockChanges = await CreateLivestockRequestItemChanges(livestockActionContext, livestockRequestItem.ActionContextYear, livestockRequestItem.FarmId, RequestDocumentTypeEnum.ListC, identifiersIds);
+									}
+								}
+							}
+							else
+								throw new ArgumentNullException("Error");
+						}
+					}
+
+					livestockChanges.ChangesInternal = livestockChanges.Changes.ToDictionary((i) => i.Key, (i) => i.Value);
+					livestockChanges.ChangesCount = livestockChanges.ChangesInternal.Count;
+
+					livestockRequestItem.LivestockRequestItemsAfterUpdate = Helpers.SerializeToJsonString<LivestockRequestItemChanges>(livestockChanges);
+				}
+
+				await context.SaveChangesAsync();
+
+			}
 		}
 
 		internal static async Task CreateActionContext(RequestDocumentTypeEnum requestDocumentType)
@@ -367,120 +441,136 @@ namespace CropMeasureEligibility.Editor.Service
 					continue;
 
 				// Kreiranje LivestockDictionary
-				LivestockActionContext livestockActionContext = await CreateLivestockActionContext(livestockRequestItem, requestDocumentType);
+				LivestockActionContext livestockActionContext = null;
 
-				// Spramanje LivestockDictionary
-				livestockRequestItem.LivestockDictionaryAfterUpdate = Helpers.SerializeToJsonString<LivestockActionContext>(livestockActionContext);
+				if (String.IsNullOrEmpty(livestockRequestItem.LivestockDictionaryAfterUpdate))
+				{
+					livestockActionContext = await CreateLivestockActionContext(livestockRequestItem, requestDocumentType);
+					// Spramanje LivestockDictionary
+					livestockRequestItem.LivestockDictionaryAfterUpdate = Helpers.SerializeToJsonString<LivestockActionContext>(livestockActionContext);
+				}
+				else
+					livestockActionContext = Helpers.DeserializeFromJsonString<LivestockActionContext>(livestockRequestItem.LivestockDictionaryAfterUpdate);
 
 				// Kreiranje LivestockRequestItems
 				LivestockRequestItemChanges livestockChanges = await CreateLivestockRequestItemChanges(livestockActionContext, livestockRequestItem.ActionContextYear, livestockRequestItem.FarmId, requestDocumentType);
 
-				//TODO: Provjerit dali je potrebno izmjeniti nesto prije spramanja
+				livestockChanges.ChangesInternal = livestockChanges.Changes.ToDictionary((i) => i.Key, (i) => i.Value);
+				livestockChanges.ChangesCount = livestockChanges.ChangesInternal.Count;
 
-				//	if (!String.IsNullOrEmpty(livestockRequestItem.LivestockRequestItems))
-				//	{
-				//		LivestockRequestItemChanges changes = Helpers.DeserializeFromJsonString<LivestockRequestItemChanges>(livestockRequestItem.LivestockRequestItems);
+				// Spramanje LivestockDictionary
+				livestockRequestItem.LivestockRequestItemsAfterUpdate = Helpers.SerializeToJsonString<LivestockRequestItemChanges>(livestockChanges);
 
-				//		IEnumerable<LivestockRequestItemGroupedDto> groupedDtos = changes.Changes.Values
-				//			.GroupBy(x => x.Jibg)
-				//			.ToDictionary(x => x.Key, y => y.ToList())
-				//			.Select(x => new LivestockRequestItemGroupedDto
-				//			{
-				//				Jibg = x.Key,
-				//				LivestockRequestItems = x.Value
-				//			});
-
-				//		if (groupedDtos != null && groupedDtos.Any())
-				//		{
-				//			//Dodatak Declarationa za KD
-				//			if (changes.Declarations.Keys.ToList().Any(x => x == 6))
-				//				changes.Declarations[6] = true;
-				//			else
-				//				changes.Declarations.Add(6, true);
-
-				//			foreach (LivestockRequestItemGroupedDto item in groupedDtos)
-				//			{
-				//				LivestockRequestItemGroupedDto livestockRequestItemGroup = new LivestockRequestItemGroupedDto
-				//				{
-				//					Jibg = item.Jibg,
-				//					LivestockRequestItems = item.LivestockRequestItems
-				//				};
-
-				//				List<LivestockRequestItemDto> livestockRequestItemsWithoutAnimylTypeId = livestockRequestItemGroup.LivestockRequestItems.Where(x => x.AnimalTypeId == null).ToList();
-
-				//				if (livestockRequestItemsWithoutAnimylTypeId.Any())
-				//				{
-				//					List<DcanimalBreed> dcanimalBreeds = await context.DcanimalBreeds.ToListAsync();
-
-				//					foreach (var livestockItem in livestockRequestItemsWithoutAnimylTypeId)
-				//					{
-				//						livestockItem.AnimalTypeId = dcanimalBreeds.FirstOrDefault(x => x.Id == livestockItem.AnimalBreedId)?.AnimalTypeId;
-				//					}
-				//				}
-
-				//				IList<int> vgoAnimalBreedObligation = await context.VgoLivestockProtectedObligations.AsNoTracking()
-				//					.Where(x => x.FarmId == livestockRequestItem.FarmId && x.EndYear >= livestockRequestItem.ActionContextYear && x.Active == true)
-				//					.TagWith("CommonLivestockService.GetLivestockRequestGroupedItems")
-				//					.Select(x => x.AnimalBreedId)
-				//					.ToListAsync();
-
-				//				if (vgoAnimalBreedObligation.Any())
-				//				{
-				//					List<LivestockRequestItemDto> filteredLivestockRequestItem = livestockRequestItemGroup.LivestockRequestItems
-				//						.Where(x => vgoAnimalBreedObligation.Contains((int)x.AnimalBreedId))
-				//						.ToList();
-
-				//					if (filteredLivestockRequestItem.Any())
-				//					{
-				//						foreach (var livestockItem in filteredLivestockRequestItem)
-				//						{
-				//							if (livestockItem.MeasureItems.Count() < 2 && !livestockItem.MeasureItems.Any(x => x.MeasureDefinitionId == 509))
-				//							{
-				//								livestockItem.IsVgoChecked = null;
-
-				//								LivestockRequestItemMeasureDto measureItem = new LivestockRequestItemMeasureDto()
-				//								{
-				//									LivestockId = livestockItem.LivestockId,
-				//									MeasureDefinitionId = 509,
-				//									MeasureId = 20,
-				//									MeasureCode = "09",
-				//									IsSeparatedMeasure = false,
-				//									IsChecked = null,
-				//									IsChangedInRequest = null
-				//								};
-
-				//								livestockItem.MeasureItems.Add(measureItem);
-				//							}
-				//						}
-				//					}
-				//				}
-				//			}
-				//		}
-
-				//		changes.ChangesInternal = changes.Changes.ToDictionary((i) => i.Key, (i) => i.Value);
-
-				//		livestockRequestItem.LivestockRequestItemsAfterUpdate = Helpers.SerializeToJsonString<LivestockRequestItemChanges>(changes);
-				//	}
-
-				await InsertLivestockRequestItemsToDb(livestockRequestItem.ActionContextId, livestockChanges, requestDocumentType);
+				await context.SaveChangesAsync();
 			}
 		}
 
-		private static async Task<LivestockActionContext> CreateLivestockActionContext(ActionContextLivestockRequestItem livestockRequestItem, RequestDocumentTypeEnum requestDocumentType)
+		internal static async Task UpdateListCDataFromOldById(int id)
+		{
+			using var context = new EditorDbContext();
+
+			ActionContextLivestockRequestItem? actionContextLivestockRequestItem = await context.ActionContextLivestockRequestItems
+				.FirstOrDefaultAsync(x => x.Id == id);
+
+			if (actionContextLivestockRequestItem != null)
+			{
+				LivestockRequestItemChanges changes = Helpers.DeserializeFromJsonString<LivestockRequestItemChanges>(actionContextLivestockRequestItem.LivestockRequestItems);
+
+				LivestockRequestItemChanges livestockChanges = Helpers.DeserializeFromJsonString<LivestockRequestItemChanges>(actionContextLivestockRequestItem.LivestockRequestItemsAfterUpdate);
+
+				foreach (var change in changes.Changes)
+				{
+					if (changes.Changes.ContainsKey(change.Key) && livestockChanges.Changes.ContainsKey(change.Key))
+					{
+						// Identifier
+						if (livestockChanges.Changes[change.Key].Identifier != changes.Changes[change.Key].Identifier)
+							livestockChanges.Changes[change.Key].Identifier = changes.Changes[change.Key].Identifier;
+
+						//CategoryId
+						if (livestockChanges.Changes[change.Key].CategoryId == 0)
+							livestockChanges.Changes[change.Key].CategoryId = changes.Changes[change.Key].CategoryId;
+
+						//CategoryName
+						if (String.IsNullOrEmpty(livestockChanges.Changes[change.Key].CategoryName))
+							livestockChanges.Changes[change.Key].CategoryName = changes.Changes[change.Key].CategoryName;
+
+						//MeasureItems
+						if (livestockChanges.Changes[change.Key].MeasureItems == null)
+							livestockChanges.Changes[change.Key].MeasureItems = changes.Changes[change.Key].MeasureItems;
+
+						//CategoryItems
+						if (livestockChanges.Changes[change.Key].CategoryItems == null)
+							livestockChanges.Changes[change.Key].CategoryItems = changes.Changes[change.Key].CategoryItems;
+
+						//NotSelectedDoubleMeasures
+						if (livestockChanges.Changes[change.Key].NotSelectedDoubleMeasures != changes.Changes[change.Key].NotSelectedDoubleMeasures)
+							livestockChanges.Changes[change.Key].NotSelectedDoubleMeasures = changes.Changes[change.Key].NotSelectedDoubleMeasures;
+					}
+					else if (changes.Changes.ContainsKey(change.Key) && !livestockChanges.Changes.ContainsKey(change.Key))
+					{
+						livestockChanges.Changes.Add(change.Key, change.Value);
+					}
+				}
+
+				foreach (var change in changes.ChangesInternal)
+				{
+					if (changes.ChangesInternal.ContainsKey(change.Key) && livestockChanges.ChangesInternal.ContainsKey(change.Key))
+					{
+						// Identifier
+						if (livestockChanges.ChangesInternal[change.Key].Identifier != changes.ChangesInternal[change.Key].Identifier)
+							livestockChanges.ChangesInternal[change.Key].Identifier = changes.ChangesInternal[change.Key].Identifier;
+
+						//CategoryId
+						if (livestockChanges.ChangesInternal[change.Key].CategoryId == 0)
+							livestockChanges.ChangesInternal[change.Key].CategoryId = changes.ChangesInternal[change.Key].CategoryId;
+
+						//CategoryName
+						if (String.IsNullOrEmpty(livestockChanges.ChangesInternal[change.Key].CategoryName))
+							livestockChanges.ChangesInternal[change.Key].CategoryName = changes.ChangesInternal[change.Key].CategoryName;
+
+						//MeasureItems
+						if (livestockChanges.ChangesInternal[change.Key].MeasureItems == null)
+							livestockChanges.ChangesInternal[change.Key].MeasureItems = changes.ChangesInternal[change.Key].MeasureItems;
+
+						//CategoryItems
+						if (livestockChanges.ChangesInternal[change.Key].CategoryItems == null)
+							livestockChanges.ChangesInternal[change.Key].CategoryItems = changes.ChangesInternal[change.Key].CategoryItems;
+
+						// NotSelectedDoubleMeasures
+						if (livestockChanges.ChangesInternal[change.Key].NotSelectedDoubleMeasures != changes.ChangesInternal[change.Key].NotSelectedDoubleMeasures)
+							livestockChanges.ChangesInternal[change.Key].NotSelectedDoubleMeasures = changes.ChangesInternal[change.Key].NotSelectedDoubleMeasures;
+					}
+					else if (changes.ChangesInternal.ContainsKey(change.Key) && !livestockChanges.ChangesInternal.ContainsKey(change.Key))
+					{
+						livestockChanges.ChangesInternal.Add(change.Key, change.Value);
+					}
+				}
+
+
+				actionContextLivestockRequestItem.LivestockRequestItemsAfterUpdate = Helpers.SerializeToJsonString<LivestockRequestItemChanges>(livestockChanges);
+
+				await context.SaveChangesAsync();
+
+
+
+			}
+		}
+
+		private static async Task<LivestockActionContext> CreateLivestockActionContext(ActionContextLivestockRequestItem livestockRequestItem, RequestDocumentTypeEnum requestDocumentType, List<int> livestockIds = null)
 		{
 			CategoryTypeEnum categoryType = requestDocumentType == RequestDocumentTypeEnum.ListC ? CategoryTypeEnum.SheetC : CategoryTypeEnum.SheetD;
 
-			IEnumerable<LivestockDto> livestockCollection = await GetLivestock(livestockRequestItem.FarmId, (int)requestDocumentType);
+			IEnumerable<LivestockDto> livestockCollection = await GetLivestock(livestockRequestItem.FarmId, (int)requestDocumentType, livestockIds);
 			IDictionary<int, LivestockDto> livestockDictionary = livestockCollection.OrderBy(x => x.Id).ToDictionary(x => x.Id);
 
-			IEnumerable<LivestockMeasureDto> livestockMeasures = await GetLivestockMeasures(livestockRequestItem.FarmId, (int)requestDocumentType);
+			IEnumerable<LivestockMeasureDto> livestockMeasures = await GetLivestockMeasures(livestockRequestItem.FarmId, (int)requestDocumentType, livestockIds);
 			IDictionary<int, IEnumerable<LivestockMeasureDto>> livestockMeasureDictionary = livestockMeasures
 				.Select(x => x.LivestockId)
 				.Distinct()
 				.OrderBy(x => x)
 				.ToDictionary(x => x, x => livestockMeasures.Where(m => m.LivestockId == x));
 
-			IEnumerable<LivestockCategoryDto> livestockCategories = await GetLivestockCategories(livestockRequestItem.FarmId, (int)categoryType);
+			IEnumerable<LivestockCategoryDto> livestockCategories = await GetLivestockCategories(livestockRequestItem.FarmId, (int)categoryType, livestockIds);
 			IDictionary<int, IEnumerable<LivestockCategoryDto>> livestockCategoryDictionary = livestockCategories
 				.Select(x => x.LivestockId)
 				.Distinct()
@@ -497,15 +587,18 @@ namespace CropMeasureEligibility.Editor.Service
 			return livestockActionContext;
 		}
 
-		private static async Task<IEnumerable<LivestockDto>> GetLivestock(int farmId, int requestDocumentType)
+		private static async Task<IEnumerable<LivestockDto>> GetLivestock(int farmId, int requestDocumentType, List<int> livestockIds = null)
 		{
 			using var context = new EditorDbContext();
 
-			List<int> livestockIds = await context.LivestockRequestItemMeasures.AsNoTracking()
-				.Where(x => x.FarmId == farmId) //TODO: Mozda dodati filter za mjere sa listaC
-				.Select(x => x.LivestockId)
-				.Distinct()
-				.ToListAsync();
+			if (livestockIds == null)
+			{
+				livestockIds = await context.LivestockRequestItemMeasures.AsNoTracking()
+					.Where(x => x.FarmId == farmId && !ListDMeasureDefinitionIds.Contains(x.MeasureDefinitionId))
+					.Select(x => x.LivestockId)
+					.Distinct()
+					.ToListAsync();
+			}
 
 			IQueryable<Livestock> livestock = context.Livestocks.AsNoTracking()
 					.Where(x => x.FarmId == farmId && livestockIds.Contains(x.Id));
@@ -522,7 +615,8 @@ namespace CropMeasureEligibility.Editor.Service
 
 			IQueryable<LivestockDto> livestockDtos =
 				(from l in livestock
-				 join m in livestockMeasureIds on l.Id equals m
+				 join m in livestockMeasureIds on l.Id equals m into mlj
+				 from subm in mlj.DefaultIfEmpty()
 				 join ab in animalBreeds on l.AnimalBreedId equals ab.Id into ablj
 				 from subab in ablj.DefaultIfEmpty()
 				 select new LivestockDto
@@ -570,15 +664,18 @@ namespace CropMeasureEligibility.Editor.Service
 			return await livestockDtos.ToListAsync();
 		}
 
-		private static async Task<IEnumerable<LivestockMeasureDto>> GetLivestockMeasures(int farmId, int requestDocumentType)
+		private static async Task<IEnumerable<LivestockMeasureDto>> GetLivestockMeasures(int farmId, int requestDocumentType, List<int> livestockIds = null)
 		{
 			using var context = new EditorDbContext();
 
-			List<int> livestockIds = await context.LivestockRequestItemMeasures.AsNoTracking()
-				.Where(x => x.FarmId == farmId) //TODO: Mozda dodati filter za mjere sa listaC
-				.Select(x => x.LivestockId)
-				.Distinct()
-				.ToListAsync();
+			if (livestockIds == null)
+			{
+				livestockIds = await context.LivestockRequestItemMeasures.AsNoTracking()
+					.Where(x => x.FarmId == farmId && !ListDMeasureDefinitionIds.Contains(x.MeasureDefinitionId))
+					.Select(x => x.LivestockId)
+					.Distinct()
+					.ToListAsync();
+			}
 
 			IQueryable<LivestockMeasure> livestockMeasures = null;
 
@@ -610,15 +707,18 @@ namespace CropMeasureEligibility.Editor.Service
 			return await livestockMeasureDtos.ToListAsync();
 		}
 
-		private static async Task<IEnumerable<LivestockCategoryDto>> GetLivestockCategories(int farmId, int categoryType)
+		private static async Task<IEnumerable<LivestockCategoryDto>> GetLivestockCategories(int farmId, int categoryType, List<int> livestockIds = null)
 		{
 			using var context = new EditorDbContext();
 
-			List<int> livestockIds = await context.LivestockRequestItemMeasures.AsNoTracking()
-				.Where(x => x.FarmId == farmId) //TODO: Mozda dodati filter za mjere sa listaC
-				.Select(x => x.LivestockId)
-				.Distinct()
-				.ToListAsync();
+			if (livestockIds == null)
+			{
+				livestockIds = await context.LivestockRequestItemMeasures.AsNoTracking()
+					.Where(x => x.FarmId == farmId && !ListDMeasureDefinitionIds.Contains(x.MeasureDefinitionId))
+					.Select(x => x.LivestockId)
+					.Distinct()
+					.ToListAsync();
+			}
 
 			IQueryable<LivestockCategory> livestockCategories = null;
 
@@ -648,7 +748,7 @@ namespace CropMeasureEligibility.Editor.Service
 			return await livestockCategoryDtos.ToListAsync();
 		}
 
-		private static async Task<LivestockRequestItemChanges> CreateLivestockRequestItemChanges(LivestockActionContext livestockActionContext, int year, int farmId, RequestDocumentTypeEnum requestDocumentType)
+		private static async Task<LivestockRequestItemChanges> CreateLivestockRequestItemChanges(LivestockActionContext livestockActionContext, int year, int farmId, RequestDocumentTypeEnum requestDocumentType, Dictionary<int, Guid> identifiersIds = null)
 		{
 			LivestockRequestItemChanges retVal = new();
 
@@ -760,7 +860,7 @@ namespace CropMeasureEligibility.Editor.Service
 					}
 				}
 
-				LivestockRequestItemDto item = retVal.CreateLivestockRequestItem(livestock, measures, categories, dccategories, dcanimalBreeds, dcanimalTypes);
+				LivestockRequestItemDto item = retVal.CreateLivestockRequestItem(livestock, measures, categories, dccategories, dcanimalBreeds, dcanimalTypes, identifiersIds);
 
 				retVal.Add(item);
 			}
@@ -768,25 +868,5 @@ namespace CropMeasureEligibility.Editor.Service
 			return retVal;
 		}
 
-		private static async Task InsertLivestockRequestItemsToDb(Guid actionContextId, LivestockRequestItemChanges changes, RequestDocumentTypeEnum requestDocumentType = RequestDocumentTypeEnum.ListC)
-		{
-			try
-			{
-				using var context = new EditorDbContext();
-
-				List<SqlParameter> cmdParameters = new List<SqlParameter>();
-				cmdParameters.Add(new SqlParameter("@ActionContextId", actionContextId));
-				cmdParameters.Add(new SqlParameter("@RequestDocumentTypeId", (int)requestDocumentType));
-				SqlParameter jsonParameter = new("@RequestItems", SqlDbType.NVarChar, -1) { Direction = ParameterDirection.Input, Value = Helpers.SerializeToJsonString<LivestockRequestItemChanges>(changes) };
-				cmdParameters.Add(jsonParameter);
-
-				string sqlStatement = @"EXEC [Payments].[ActionContext.Livestock.RequestItems.Create] @ActionContextId, @RequestDocumentTypeId, @CreatedBy, @RequestItems ";
-				await context.Database.ExecuteSqlRawAsync(sqlStatement, cmdParameters.ToArray());
-			}
-			catch (Exception ex)
-			{
-				throw ex;
-			}
-		}
 	}
 }

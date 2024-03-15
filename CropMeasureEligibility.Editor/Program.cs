@@ -1,4 +1,5 @@
-﻿using CropMeasureEligibility.Editor.Infrastructure.Persistance;
+﻿using CropMeasureEligibility.Editor.Common;
+using CropMeasureEligibility.Editor.Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
 
 namespace CropMeasureEligibility.Editor
@@ -12,9 +13,11 @@ namespace CropMeasureEligibility.Editor
 
 			//var farmIdBarcodeIds = await context.FarmIdBarcodeIds.ToListAsync();
 
-			//foreach(var farmIdBarcodeId in farmIdBarcodeIds)
+			//foreach (var farmIdBarcodeId in farmIdBarcodeIds)
 			//{
-			//    await Service.Service.GeneratePdfFile(submissionId: farmIdBarcodeId.Barcode, farmId: farmIdBarcodeId.FarmId);
+			//	await Service.Service.GeneratePdfFile(submissionId: farmIdBarcodeId.Barcode, farmId: farmIdBarcodeId.FarmId);
+
+			//	await Task.Delay(10000);
 			//}
 			#endregion
 
@@ -32,7 +35,7 @@ namespace CropMeasureEligibility.Editor
 
 			#region Database JSON ListD
 
-			await Service.Service.UpdateJsonListD();
+			//await Service.Service.UpdateJsonListD();
 
 			#endregion
 
@@ -45,6 +48,8 @@ namespace CropMeasureEligibility.Editor
 			#region Database Create ActionContext
 
 			//await Service.Service.CreateActionContext(RequestDocumentTypeEnum.ListC);
+
+			await Service.Service.UpdateListCDataFromOldById(24); //Id iz tablice dbo.ActionContextLivestockRequestItems
 
 			#endregion
 		}

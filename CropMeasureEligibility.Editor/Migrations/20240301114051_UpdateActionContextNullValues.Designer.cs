@@ -4,6 +4,7 @@ using CropMeasureEligibility.Editor.Infrastructure.Persistance;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CropMeasureEligibility.Editor.Migrations
 {
     [DbContext(typeof(EditorDbContext))]
-    partial class EditorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240301114051_UpdateActionContextNullValues")]
+    partial class UpdateActionContextNullValues
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

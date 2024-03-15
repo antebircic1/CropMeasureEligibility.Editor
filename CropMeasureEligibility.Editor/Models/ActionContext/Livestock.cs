@@ -12,15 +12,15 @@
 		public int? AnimalBreedId { get; set; }
 		public int? FarmId { get; set; }
 		public string AnimalCode { get; set; }
-		public string Jibg { get; set; }
-		public string Ikg { get; set; }
-		public string FatherAnimalBreed { get; set; }
-		public string FatherAnimalCode { get; set; }
-		public string MotherAnimalBreed { get; set; }
-		public string MotherAnimalCode { get; set; }
-		public string MicrochipCode { get; set; }
-		public string AnimalTypeCode { get; set; }
-		public string AnimalBreedCode { get; set; }
+		public string? Jibg { get; set; }
+		public string? Ikg { get; set; }
+		public string? FatherAnimalBreed { get; set; }
+		public string? FatherAnimalCode { get; set; }
+		public string? MotherAnimalBreed { get; set; }
+		public string? MotherAnimalCode { get; set; }
+		public string? MicrochipCode { get; set; }
+		public string? AnimalTypeCode { get; set; }
+		public string? AnimalBreedCode { get; set; }
 		public DateTime? DateOfBirth { get; set; }
 		public DateTime? DateOfRegistration { get; set; }
 		public DateTime? DateStartOfFattening { get; set; }

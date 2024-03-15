@@ -26,7 +26,7 @@
 		public bool? IsVgoChecked { get; set; }
 
 
-		public List<LivestockRequestItemMeasureDto> MeasureItems { get; set; }
-		public List<LivestockRequestItemCategoryDto> CategoryItems { get; set; }
+		public List<LivestockRequestItemMeasureDto>? MeasureItems { get; set; }
+		public List<LivestockRequestItemCategoryDto>? CategoryItems { get; set; }
 	}
 }

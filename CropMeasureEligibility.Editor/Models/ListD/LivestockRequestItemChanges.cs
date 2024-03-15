@@ -170,16 +170,18 @@ namespace CropMeasureEligibility.Editor.Models.ListD
 			IEnumerable<LivestockRequestItemCategoryDto> categoryItems,
 			IEnumerable<Dccategory> dccategories,
 			IEnumerable<DcanimalBreed> dcanimalBreeds,
-			IEnumerable<DcanimalType> dcanimalTypes)
+			IEnumerable<DcanimalType> dcanimalTypes,
+			Dictionary<int, Guid> identifiersIds = null
+			)
 		{
-			LivestockRequestItemDto retVal = CreateLivestockRequestItem(livestock);
-			retVal.MeasureItems = measureItems.ToList();
-			retVal.CategoryItems = categoryItems.ToList();
+			LivestockRequestItemDto retVal = CreateLivestockRequestItem(livestock, identifiersIds);
+			retVal.MeasureItems = measureItems != null ? measureItems.ToList() : null;
+			retVal.CategoryItems = categoryItems != null ? categoryItems.ToList() : null;
 
 			DcanimalBreed dcanimalBreed = dcanimalBreeds.FirstOrDefault(x => x.AnimalTypeCode == retVal.AnimalTypeCode && x.Code == retVal.AnimalBreedCode);
 			retVal.AnimalBreedName = dcanimalBreed?.Name ?? string.Empty;
 
-			int categoryId = categoryItems.First().CategoryId;
+			int categoryId = categoryItems != null ? categoryItems.First().CategoryId : 0;
 			Dccategory dccategory = dccategories.FirstOrDefault(x => x.Id == categoryId);
 			retVal.CategoryId = categoryId;
 			retVal.CategoryName = dccategory?.LegendName ?? string.Empty;
@@ -190,11 +192,18 @@ namespace CropMeasureEligibility.Editor.Models.ListD
 			return retVal;
 		}
 
-		private static LivestockRequestItemDto CreateLivestockRequestItem(LivestockDto livestock)
+		private static LivestockRequestItemDto CreateLivestockRequestItem(LivestockDto livestock, Dictionary<int, Guid> identifiersIds = null)
 		{
+			var guidId = Guid.NewGuid();
+
+			if (identifiersIds != null)
+			{
+				guidId = identifiersIds[livestock.Id];
+			}
+
 			LivestockRequestItemDto retVal = new LivestockRequestItemDto()
 			{
-				Identifier = Guid.NewGuid(),
+				Identifier = guidId,
 				LivestockId = livestock.Id,
 				AnimalTypeId = livestock.AnimalTypeId,
 				AnimalBreedId = livestock.AnimalBreedId,
